@@ -1,8 +1,8 @@
 ---
 layout: home
 
-title: ESLint 通关小册
-titleTemplate: Vite & Vue Powered Static Site Generator
+title: Blog
+titleTemplate: 
 
 hero:
   name: My Blog

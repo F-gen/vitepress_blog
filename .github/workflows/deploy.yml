@@ -1,44 +1,27 @@
-name: Release
+name: Deploy
 
 on:
   push:
     branches:
-      - master
-env:
-  CI: true
-  PNPM_CACHE_FOLDER: .pnpm-store      
+      - main
 
 jobs:
-  release:
-    name: Release
+  deploy:
     runs-on: ubuntu-latest
     steps:
-      - name: checkout code repository
-        uses: actions/checkout@v2
+      - uses: actions/checkout@v2
+      - uses: actions/setup-node@v3
         with:
-          fetch-depth: 0
-          
-      - name: setup node.js
-        uses: actions/setup-node@v2
-        with:
-          node-version: 14
+          node-version: 16
+          cache: yarn
+      - run: yarn install --frozen-lockfile
 
-      - name: Setup pnpm
-        uses: pnpm/action-setup@v2.2.2
-        with:
-          version: 6
+      - name: Build
+        run: yarn docs:build
 
-      - name: install dependencies
-        run: pnpm install
-
-      - name: Create Release Pull Request or Publish to npm
-        # https://github.com/changesets/action
-        uses: changesets/action@v1
+      - name: Deploy
+        uses: peaceiris/actions-gh-pages@v3
         with:
-          # this expects you to have a script called release which does a build for your packages and calls changeset publish
-          publish: pnpm run build
-          version: pnpm run version
-          commit: "chore: update versions"
-          title: "chore: update versions"
-        env:
-          GITHUB_TOKEN: ${{ secrets.blog_token }}
+          github_token: ${{ secrets.blog_token }}
+          publish_dir: docs/.vitepress/dist
+        

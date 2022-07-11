@@ -19,6 +19,6 @@ hero:
 features:
   - title: "open"
     details: config
-  - title: "test"
+  - title: "Deploy"
     details: true
 ---

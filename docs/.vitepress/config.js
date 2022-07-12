@@ -1,6 +1,6 @@
 export default {
   title: 'VitePress',
-  base:'./',
+  base:"/vitepress_blog/",
   description: 'Just playing around.',
   lastUpdated: true,
   themeConfig: {

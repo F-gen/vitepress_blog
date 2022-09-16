@@ -57,6 +57,12 @@ export default {
           { text: '新的组件 ', link: '/vue/新的组件' },
          
         ]
+      },
+      {
+        text: 'Ts',
+        items: [
+          { text: '01_初识TS', link: '/TypeScript/chapter1/01_初识TS' },
+        ],
       }
     ]
   }

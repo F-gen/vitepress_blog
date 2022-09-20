@@ -62,6 +62,7 @@ export default {
         text: 'Ts',
         items: [
           { text: '01_初识TS', link: '/TypeScript/chapter1/01_初识TS' },
+          { text: '02_安装TS', link: '/TypeScript/chapter1/02_安装TS' },
         ],
       }
     ]
